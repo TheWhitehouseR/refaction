@@ -8,8 +8,6 @@ namespace refactor_me.Services
     [Component(RegisterAsImplementedInterface = true)]
     public class ProductsService : IProductsService
     {
-
-
         public Products GetAllProducts()
         {
             throw new NotImplementedException();

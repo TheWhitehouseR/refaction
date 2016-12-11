@@ -101,6 +101,7 @@
     <Compile Include="App_Start\IoCConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Attributes\ComponentAttribute.cs" />
+    <Compile Include="Controllers\ProductOptionsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Enums\ScopeEnum.cs" />
     <Compile Include="Extensions\CompositionExtensions.cs" />
@@ -110,6 +111,9 @@
     </Compile>
     <Compile Include="Interfaces\IProductsService.cs" />
     <Compile Include="Models\Helpers.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductOption.cs" />
+    <Compile Include="Models\ProductOptions.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ProductsService.cs" />
