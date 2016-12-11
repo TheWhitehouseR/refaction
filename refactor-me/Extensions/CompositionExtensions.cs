@@ -2,10 +2,10 @@ using System.Reflection;
 using Autofac;
 using Autofac.Builder;
 using Autofac.Features.Scanning;
-using refactor_me.Enums;
-using refactor_me.Attributes;
+using ProductsApi.Enums;
+using ProductsApi.Attributes;
 
-namespace refactor_me.Extensions
+namespace ProductsApi.Extensions
 {
     /// <summary>
     /// Provides automatic component registration by scanning assemblies and types for

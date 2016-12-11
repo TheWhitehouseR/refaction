@@ -1,7 +1,7 @@
-using refactor_me.Enums;
+using ProductsApi.Enums;
 using System;
 
-namespace refactor_me.Attributes
+namespace ProductsApi.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class ComponentAttribute : Attribute

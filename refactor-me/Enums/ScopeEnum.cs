@@ -1,4 +1,4 @@
-namespace refactor_me.Enums
+namespace ProductsApi.Enums
 {
     /// <summary>
     /// An enum containing the possible different values for a component's scope
