@@ -2,16 +2,25 @@
 using System.Net;
 using System.Web.Http;
 using refactor_me.Models;
+using refactor_me.Interfaces;
 
 namespace refactor_me.Controllers
 {
     [RoutePrefix("products")]
     public class ProductsController : ApiController
     {
+        private IProductsService _productsService;
+
+        public ProductsController(IProductsService productsService)
+        {
+            _productsService = productsService;
+        }
+
         [Route]
         [HttpGet]
         public Products GetAll()
         {
+            //return _productsService.GetAllProducts();
             return new Products();
         }
 
