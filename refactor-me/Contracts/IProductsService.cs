@@ -13,8 +13,13 @@ namespace ProductsApi.Contracts
         Products GetProductsByName(string name);
 
         Product GetProductById(Guid productGuid);
+
+        Product GetProductById(string productGuid);
+
         void CreateProduct(Product product);
+
         void UpdateProduct(Guid id, Product product);
+
         void DeleteProduct(Guid id);
     }
 }

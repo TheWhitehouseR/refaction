@@ -14,25 +14,9 @@ namespace ProductsApi.Models
             Items = items;
         }
 
-        
-        /*public Products(string name)
+        public Products(Product product)
         {
-            LoadProducts($"where lower(name) like '%{name.ToLower()}%'");
+            Items = new List<Product>() { product };
         }
-
-        private void LoadProducts(string where)
-        {
-            Items = new List<Product>();
-            var conn = Helpers.NewConnection();
-            var cmd = new SqlCommand($"select id from product {where}", conn);
-            conn.Open();
-
-            var rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                var id = Guid.Parse(rdr["id"].ToString());
-                Items.Add(new Product(id));
-            }
-        }*/
     }
 }

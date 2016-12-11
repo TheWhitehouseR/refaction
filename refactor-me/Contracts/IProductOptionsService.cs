@@ -7,12 +7,12 @@ namespace ProductsApi.Contracts
     {
         ProductOptions GetOptionsByProductId(Guid productId);
 
-        ProductOption GetOptionByProductOptionId(Guid productId, Guid id);
+        ProductOption GetOptionByProductOptionId(Guid optionId);
 
-        void CreateOption(Guid productId, ProductOption option);
+        void CreateProductOption(Guid productId, ProductOption option);
 
-        void UpdateOption(Guid optionId, ProductOption option);
+        void UpdateProductOption(Guid optionId, ProductOption option);
 
-        void DeleteOption(Guid optionId);
+        void DeleteProductOption(Guid optionId);
     }
 }

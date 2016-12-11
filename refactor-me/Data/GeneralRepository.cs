@@ -64,5 +64,10 @@ namespace ProductsApi.Data
         {
             _context.Dispose();
         }
+
+        IQueryable<TData> IRepository.Query<TData>()
+        {
+            return _context.Set<TData>();
+        }
     }
 }
