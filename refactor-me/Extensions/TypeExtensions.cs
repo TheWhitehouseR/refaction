@@ -1,9 +1,9 @@
-using refactor_me.Attributes;
-using refactor_me.Enums;
+using ProductsApi.Attributes;
+using ProductsApi.Enums;
 using System;
 using System.Linq;
 
-namespace refactor_me.Extensions
+namespace ProductsApi.Extensions
 {
     /// <summary>
     /// Extension methods to handle common attribute retrieval

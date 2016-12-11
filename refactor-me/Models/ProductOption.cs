@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using Newtonsoft.Json;
+using ProductsApi.Contracts;
 
-namespace refactor_me.Models
+namespace ProductsApi.Models
 {
-    public class ProductOption
+    public class ProductOption : IEntity
     {
         public Guid Id { get; set; }
 
@@ -15,18 +16,20 @@ namespace refactor_me.Models
 
         public string Description { get; set; }
 
-        [JsonIgnore]
-        public bool IsNew { get; }
+        //[JsonIgnore]
+        //public bool IsNew { get; }
 
         public ProductOption()
         {
-            Id = Guid.NewGuid();
-            IsNew = true;
+            //Id = Guid.NewGuid();
+            //IsNew = true;
         }
 
         public ProductOption(Guid id)
         {
-            IsNew = true;
+            Id = id;
+
+            /*IsNew = true;
             var conn = Helpers.NewConnection();
             var cmd = new SqlCommand($"select * from productoption where id = '{id}'", conn);
             conn.Open();
@@ -39,10 +42,10 @@ namespace refactor_me.Models
             Id = Guid.Parse(rdr["Id"].ToString());
             ProductId = Guid.Parse(rdr["ProductId"].ToString());
             Name = rdr["Name"].ToString();
-            Description = (DBNull.Value == rdr["Description"]) ? null : rdr["Description"].ToString();
+            Description = (DBNull.Value == rdr["Description"]) ? null : rdr["Description"].ToString();*/
         }
 
-        public void Save()
+        /*public void Save()
         {
             var conn = Helpers.NewConnection();
             var cmd = IsNew ?
@@ -59,6 +62,6 @@ namespace refactor_me.Models
             conn.Open();
             var cmd = new SqlCommand($"delete from productoption where id = '{Id}'", conn);
             cmd.ExecuteReader();
-        }
+        }*/
     }
 }

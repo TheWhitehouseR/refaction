@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net;
 using System.Web.Http;
-using refactor_me.Models;
-using refactor_me.Interfaces;
+using ProductsApi.Models;
+using ProductsApi.Contracts;
 
-namespace refactor_me.Controllers
+namespace ProductsApi.Controllers
 {
     [RoutePrefix("products")]
     public class ProductsController : ApiController
@@ -20,57 +20,42 @@ namespace refactor_me.Controllers
         [HttpGet]
         public Products GetAll()
         {
-            //return _productsService.GetAllProducts();
-            return new Products();
+            return _productsService.GetAllProducts();
         }
 
         [Route]
         [HttpGet]
         public Products SearchByName(string name)
         {
-            return new Products(name);
+            return _productsService.GetProductsByName(name);
         }
 
         [Route("{id}")]
         [HttpGet]
         public Product GetProduct(Guid id)
         {
-            var product = new Product(id);
-            if (product.IsNew)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-
-            return product;
+            return _productsService.GetProductById(id);
         }
 
         [Route]
         [HttpPost]
         public void Create(Product product)
         {
-            product.Save();
+            _productsService.CreateProduct(product);
         }
 
         [Route("{id}")]
         [HttpPut]
         public void Update(Guid id, Product product)
         {
-            var orig = new Product(id)
-            {
-                Name = product.Name,
-                Description = product.Description,
-                Price = product.Price,
-                DeliveryPrice = product.DeliveryPrice
-            };
-
-            if (!orig.IsNew)
-                orig.Save();
+            _productsService.UpdateProduct(id, product);
         }
 
         [Route("{id}")]
         [HttpDelete]
         public void Delete(Guid id)
         {
-            var product = new Product(id);
-            product.Delete();
+            _productsService.DeleteProduct(id);
         }
     }
 }

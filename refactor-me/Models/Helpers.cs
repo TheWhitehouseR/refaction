@@ -1,8 +1,9 @@
 ﻿using System.Data.SqlClient;
 using System.Web;
 
-namespace refactor_me.Models
+namespace ProductsApi.Models
 {
+    /*
     public class Helpers
     {
         private const string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={DataDirectory}\Database.mdf;Integrated Security=True";
@@ -13,4 +14,5 @@ namespace refactor_me.Models
             return new SqlConnection(connstr);
         }
     }
+    */
 }

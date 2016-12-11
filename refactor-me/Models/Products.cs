@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using Newtonsoft.Json;
 
-namespace refactor_me.Models
+namespace ProductsApi.Models
 {
     public class Products
     {
-        public List<Product> Items { get; private set; }
+        public IList<Product> Items { get; private set; }
 
-        public Products()
+        public Products(IList<Product> items)
         {
-            LoadProducts(null);
+            Items = items;
         }
 
-        public Products(string name)
+        
+        /*public Products(string name)
         {
             LoadProducts($"where lower(name) like '%{name.ToLower()}%'");
         }
@@ -32,6 +33,6 @@ namespace refactor_me.Models
                 var id = Guid.Parse(rdr["id"].ToString());
                 Items.Add(new Product(id));
             }
-        }
+        }*/
     }
 }

@@ -2,9 +2,9 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using System.Reflection;
 using System.Web.Http;
-using refactor_me.Extensions;
+using ProductsApi.Extensions;
 
-namespace refactor_me
+namespace ProductsApi
 {
     /// <summary>
     /// The autofac configuration containing the setup of the container

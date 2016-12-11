@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using Newtonsoft.Json;
+using ProductsApi.Contracts;
 
-namespace refactor_me.Models
+namespace ProductsApi.Models
 {
-    public class Product
+    public class Product : IEntity
     {
         public Guid Id { get; set; }
 
@@ -28,7 +29,9 @@ namespace refactor_me.Models
 
         public Product(Guid id)
         {
-            IsNew = true;
+            Id = id;
+
+            /*IsNew = true;
             var conn = Helpers.NewConnection();
             var cmd = new SqlCommand($"select * from product where id = '{id}'", conn);
             conn.Open();
@@ -42,10 +45,10 @@ namespace refactor_me.Models
             Name = rdr["Name"].ToString();
             Description = (DBNull.Value == rdr["Description"]) ? null : rdr["Description"].ToString();
             Price = decimal.Parse(rdr["Price"].ToString());
-            DeliveryPrice = decimal.Parse(rdr["DeliveryPrice"].ToString());
+            DeliveryPrice = decimal.Parse(rdr["DeliveryPrice"].ToString());*/
         }
 
-        public void Save()
+        /*public void Save()
         {
             var conn = Helpers.NewConnection();
             var cmd = IsNew ? 
@@ -65,6 +68,6 @@ namespace refactor_me.Models
             conn.Open();
             var cmd = new SqlCommand($"delete from product where id = '{Id}'", conn);
             cmd.ExecuteNonQuery();
-        }
+        }*/
     }
 }

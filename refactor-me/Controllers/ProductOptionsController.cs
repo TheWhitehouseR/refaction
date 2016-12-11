@@ -1,60 +1,59 @@
 ﻿using System;
 using System.Net;
 using System.Web.Http;
-using refactor_me.Models;
-using refactor_me.Interfaces;
+using ProductsApi.Models;
+using ProductsApi.Contracts;
 
-namespace refactor_me.Controllers
+namespace ProductsApi.Controllers
 {
-    [RoutePrefix("products")]
+    [RoutePrefix("products/{productId:guid}/options")]
     public class ProductOptionsController : ApiController
     {
-        [Route("{productId}/options")]
+        private IProductOptionsService _productOptionsService;
+
+        public ProductOptionsController(IProductOptionsService productOptionsService)
+        {
+            _productOptionsService = productOptionsService;
+        }
+
         [HttpGet]
         public ProductOptions GetOptions(Guid productId)
         {
-            return new ProductOptions(productId);
+            var options = _productOptionsService.GetOptionsByProductId(productId);
+
+            /*if (options == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }*/
+
+            return options;
         }
         
-        [Route("{productId}/options/{id}")]
+        [Route("{id}")]
         [HttpGet]
         public ProductOption GetOption(Guid productId, Guid id)
         {
-            var option = new ProductOption(id);
-            if (option.IsNew)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-
-            return option;
+            return _productOptionsService.GetOptionByProductOptionId(productId, id);
         }
 
-        [Route("{productId}/options")]
         [HttpPost]
         public void CreateOption(Guid productId, ProductOption option)
         {
-            option.ProductId = productId;
-            option.Save();
+            _productOptionsService.CreateOption(productId, option);
         }
 
-        [Route("{productId}/options/{id}")]
+        [Route("{id}")]
         [HttpPut]
         public void UpdateOption(Guid id, ProductOption option)
         {
-            var orig = new ProductOption(id)
-            {
-                Name = option.Name,
-                Description = option.Description
-            };
-
-            if (!orig.IsNew)
-                orig.Save();
+            _productOptionsService.UpdateOption(id, option);
         }
 
-        [Route("{productId}/options/{id}")]
+        [Route("{id}")]
         [HttpDelete]
         public void DeleteOption(Guid id)
         {
-            var opt = new ProductOption(id);
-            opt.Delete();
+            _productOptionsService.DeleteOption(id);
         }
     }
 }
